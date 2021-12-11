@@ -248,9 +248,7 @@
 		</div>
 		<script>
 			function disableSelect(name) {
-				console.log(name);
 				var options = document.querySelectorAll('select[name="' + name + '"] option:not([value=""])');
-				console.log(options);
 				for(var i = 0; i < options.length; i++) {
 					options[i].disabled = false;
 				}
