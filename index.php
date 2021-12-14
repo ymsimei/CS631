@@ -13,38 +13,66 @@
 		<?php
 			if ($_SESSION["loggedIn"] == "1") {
 				print('<div class="container py-5 text-center">
-					<h1 class="fw-light">Welcome '. $_SESSION["FirstName"] . '</h1>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item active">Dashboard</li>
+						</ol>
+					</nav>
+					<h1 class="fw-light">Welcome '. $_SESSION["username"] . '</h1>
 					<a href="actions/logout.php">Logout</a>
+					<a href="actions/reset.php">Reset</a>
 				</div>
 				<div class="container">
-					<div class="row justify-content-center">
+					<div class="row g-2">
+						<div class="col-6">
+							<div class="card text-center">
+								<div class="card-body">
+									<i class="bi bi-tree-fill fs-1"></i>
+									<h5 class="card-title">Branches</h5>
+									<p class="card-text">Create, modify, and delete branches.</p>
+									<a href="branches" class="btn btn-primary">View Branches</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="card text-center">
+								<div class="card-body">
+									<i class="bi bi-person-badge-fill fs-1"></i>
+									<h5 class="card-title">Employees</h5>
+									<p class="card-text">Create, modify, and delete employees.</p>
+									<a href="employees" class="btn btn-primary">View Employees</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row g-2 py-2">
+						<div class="col-4">
+							<div class="card text-center">
+								<div class="card-body">
+									<i class="bi bi-people-fill fs-1"></i>
+									<h5 class="card-title">Customers</h5>
+									<p class="card-text">Create, modify, and delete customers.</p>
+									<a href="customers" class="btn btn-primary">View Customers</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-4">
+							<div class="card text-center">
+								<div class="card-body">
+									<i class="bi bi-piggy-bank-fill fs-1"></i>
+									<h5 class="card-title">Accounts</h5>
+									<p class="card-text">Create, modify, and delete accounts.</p>
+									<a href="accounts" class="btn btn-primary">View Accounts</a>
+								</div>
+							</div>
+						</div>
 						<div class="col-4">
 							<div class="card text-center">
 								<div class="card-body">
 									<i class="bi bi-cash-coin fs-1"></i>
-									<h5 class="card-title">Transaction Application</h5>
-									<p class="card-text">Create, delete, and modify transactions.</p>
-									<a href="transaction" class="btn btn-primary">Go to App</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="card text-center">
-								<div class="card-body">
-									<i class="bi bi-journals fs-1"></i>
-									<h5 class="card-title">Passbook Application</h5>
-									<p class="card-text">Display passbooks for customers.</p>
-									<a href="passbook" class="btn btn-primary">Go to App</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="card text-center">
-								<div class="card-body">
-									<i class="bi bi-person-lines-fill fs-1"></i>
-									<h5 class="card-title">Customer Application</h5>
-									<p class="card-text">Create, delete, and modify customers.</p>
-									<a href="customer" class="btn btn-primary">Go to App</a>
+									<h5 class="card-title">Transactions</h5>
+									<p class="card-text">Create, modify, and delete transactions.</p>
+									<a href="transactions" class="btn btn-primary">View Transactions</a>
 								</div>
 							</div>
 						</div>
@@ -58,8 +86,8 @@
 								<form name="data" action="actions/login.php" method="post" accept-charset="uft-8" enctype="multipart/form-data" class="row g-3">
 									<h4>CS631 Bank Login</h4>
 									<div class="col-12">
-										<label>Social Security Number</label>
-										<input type="text" name="ssn" class="form-control" placeholder="SSN" maxlength="9" required>
+										<label>Username</label>
+										<input type="text" name="username" class="form-control" placeholder="Username" maxlength="9" required>
 									</div>
 									<div class="col-12">
 										<label>Password</label>

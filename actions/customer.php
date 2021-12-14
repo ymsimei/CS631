@@ -6,21 +6,25 @@
 
 	switch ($_POST["action"]) {
 		case "delete":
-			$sql = "DELETE FROM CUSTOMER WHERE C_SSN = '" . $_POST["ssn"] . "'";
+			$sql = "DELETE FROM customer WHERE customerSSN = '" . $_POST["customerssn"] . "'";
 			break;
 		case "post":
-			$sql = "INSERT INTO CUSTOMER (C_SSN, BankerSSN, FirstName, LastName, PhoneNo, StreetNo, City, State, ZipCode) VALUES ('" . $_POST["ssn"] . "', '" . $_SESSION["E_SSN"] . "', '" . $_POST["firstname"] . "', '" . $_POST["lastname"] . "', '" . $_POST["phoneno"] . "', '" . $_POST["street"] . "', '" . $_POST["city"] . "', '" . $_POST["state"] . "', '" . $_POST["zipcode"] . "')";
+			$sql = "INSERT INTO customer
+				(customerSSN,bankerSSN,firstName,lastName,phoneNo,streetNo,city,state,zipCode)
+			VALUES
+				('" . $_POST["customerssn"] . "', '" . $_POST["bankerssn"] . "', '" . $_POST["firstname"] . "', '" . $_POST["lastname"] . "', '" . $_POST["phone"] . "', '" . $_POST["street"] . "', '" . $_POST["city"] . "', '" . $_POST["state"] . "', '" . $_POST["zipcode"] . "')";
 			break;
 		case "put":
-			$sql = "UPDATE CUSTOMER SET
-				FirstName = '" . $_POST["firstname"] . "',
-				LastName = '" . $_POST["lastname"] . "',
-				PhoneNo = '" . $_POST["phoneno"] . "',
-				StreetNo = '" . $_POST["street"] . "',
-				City = '" . $_POST["city"] . "',
-				State = '" . $_POST["state"] . "',
-				ZipCode = '" . $_POST["zipcode"] . "'
-			WHERE C_SSN = '" . $_POST["ssn"] . "'";
+			$sql = "UPDATE customer SET
+				bankerSSN = '" . $_POST["bankerssn"] . "',
+				firstName = '" . $_POST["firstname"] . "',
+				lastName = '" . $_POST["lastname"] . "',
+				phoneNo = '" . $_POST["phone"] . "',
+				streetNo = '" . $_POST["street"] . "',
+				city = '" . $_POST["city"] . "',
+				state = '" . $_POST["state"] . "',
+				zipCode = '" . $_POST["zipcode"] . "'
+			customerSSN C_SSN = '" . $_POST["customerssn"] . "'";
 			break;
 	}
 
@@ -31,5 +35,5 @@
 		echo $e -> getMessage();
 	}
 
-	header("Location: /~afm36/CS631/customer");
+	header("Location: ../customers");
 ?>

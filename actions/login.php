@@ -2,23 +2,21 @@
 	include "../connection.php";
 
 	$db = dbConn::getConnection();
-	$sql = "SELECT E_SSN, FirstName, LastName, UIPassword FROM EMPLOYEE WHERE E_SSN = '" . $_POST[ssn] . "'";
+	$sql = "SELECT username, password FROM adminLogin WHERE username = '" . $_POST[username] . "'";
 
 	try {
-		$stmt = $db->prepare($sql);
-		$stmt -> execute();
-		$result = $stmt -> fetch(PDO::FETCH_ASSOC);
+		$result = $db -> prepare($sql);
+		$result -> execute();
+		$user = $result -> fetch(PDO::FETCH_ASSOC);
 	} catch(PDOException $e) {
 		echo $e -> getMessage();
 	}
 
-	if (password_verify($_POST["password"], $result["UIPassword"])) {
+	if (password_verify($_POST["password"], $user["password"])) {
 		session_start();
 		$_SESSION["loggedIn"] = "1";
-		$_SESSION["E_SSN"] = $result["E_SSN"];
-		$_SESSION["FirstName"] = $result["FirstName"];
-		$_SESSION["LastName"] = $result["LastName"];
+		$_SESSION["username"] = $user["username"];
 	}
 
-	header("Location: /~afm36/CS631");
+	header("Location: ../");
 ?>
